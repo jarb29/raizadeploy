@@ -1,18 +1,16 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 
-import { useMockedUser } from 'src/hooks/use-mocked-user';
-
 import { hideScroll } from 'src/theme/css';
-
+import { useAuthContext } from 'src/auth/hooks';
 import Logo from 'src/components/logo';
 import { NavSectionMini } from 'src/components/nav-section';
+import { ADMINISTRATOR } from 'src/config-global';
 
 import { NAV } from '../config-layout';
 import { useNavDataUser } from './config-navigation-user';
 import { useNavDataAdmin } from './config-navigation-admin';
-import { useAuthContext } from 'src/auth/hooks';
-import { ADMINISTRATOR } from 'src/config-global';
+
 import NavToggleButton from '../common/nav-toggle-button';
 
 // ----------------------------------------------------------------------
@@ -24,8 +22,8 @@ export default function NavMini() {
 
   // const navData = useNavData();
 
-  var email = user ? user.email : 'xxxxxxxx';
-  var admin = ADMINISTRATOR.email.includes(email);
+  const email = user ? user.email : 'xxxxxxxx';
+  const admin = ADMINISTRATOR.email.includes(email);
   const navData = admin ? navDataAdmin : navDataUser;
 
   return (

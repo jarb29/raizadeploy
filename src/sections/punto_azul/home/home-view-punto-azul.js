@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 
-import { styled } from '@mui/material/styles';
 import { PATH_AFTER_LOGIN } from 'src/config-global';
 
 import { useRouter } from 'src/routes/hooks';

@@ -1,13 +1,9 @@
 'use client';
 
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useAuthContext } from 'src/auth/hooks';
-
-import { useMockedUser } from 'src/hooks/use-mocked-user';
 
 import { SeoIllustration } from 'src/assets/illustrations';
 import { _appAuthors, _appRelated, _appFeatured, _appInvoices, _appInstalled } from 'src/_mock';
@@ -22,10 +18,10 @@ export default function OverviewAppView() {
   // const { user } = useMockedUser();
   const { user } = useAuthContext();
 
-  var name = user ? user.displayName : 'xxxxxxxx';
-  var email = user ? user.email : 'xxxxxxxx';
+  const name = user ? user.displayName : 'xxxxxxxx';
+  const email = user ? user.email : 'xxxxxxxx';
 
-  var admin = ADMINISTRATOR.email.includes(email);
+  const admin = ADMINISTRATOR.email.includes(email);
   const navData = admin
     ? `Espero te rinda tu dia amor \n ${name}`
     : 'Espero que todas sus fichas tecnicas esten acorde a sus requerimientos.';

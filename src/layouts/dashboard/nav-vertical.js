@@ -8,19 +8,18 @@ import Drawer from '@mui/material/Drawer';
 import { usePathname } from 'src/routes/hooks';
 
 import { useResponsive } from 'src/hooks/use-responsive';
-import { useMockedUser } from 'src/hooks/use-mocked-user';
+import { useAuthContext } from 'src/auth/hooks';
 
 import Logo from 'src/components/logo';
 import Scrollbar from 'src/components/scrollbar';
 import { NavSectionVertical } from 'src/components/nav-section';
+import { ADMINISTRATOR } from 'src/config-global';
 
 import { NAV } from '../config-layout';
 import NavUpgrade from '../common/nav-upgrade';
 // import { useNavData } from './config-navigation';
 import { useNavDataUser } from './config-navigation-user';
 import { useNavDataAdmin } from './config-navigation-admin';
-import { useAuthContext } from 'src/auth/hooks';
-import { ADMINISTRATOR } from 'src/config-global';
 
 import NavToggleButton from '../common/nav-toggle-button';
 
@@ -43,8 +42,8 @@ export default function NavVertical({ openNav, onCloseNav }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
-  var email = user ? user.email : 'xxxxxxxx';
-  var admin = ADMINISTRATOR.email.includes(email);
+  const email = user ? user.email : 'xxxxxxxx';
+  const admin = ADMINISTRATOR.email.includes(email);
   const navData = admin ? navDataAdmin : navDataUser;
 
   const renderContent = (
