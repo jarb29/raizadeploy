@@ -10,22 +10,16 @@ import Table from '@mui/material/Table';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
-import Tooltip from '@mui/material/Tooltip';
+
 import Container from '@mui/material/Container';
 import TableBody from '@mui/material/TableBody';
-import IconButton from '@mui/material/IconButton';
+
 import { alpha, useTheme } from '@mui/material/styles';
 import TableContainer from '@mui/material/TableContainer';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import Paper from '@mui/material/Paper';
-import Switch from '@mui/material/Switch';
-import ListItem from '@mui/material/ListItem';
+
 import { useAuthContext } from 'src/auth/hooks';
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
-import { RouterLink } from 'src/routes/components';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
@@ -35,7 +29,7 @@ import Walktour, { useWalktour } from 'src/sections/punto_azul/walktour';
 import { _invoices, INVOICE_SERVICE_OPTIONS } from 'src/_mock';
 
 import Label from 'src/components/label';
-import Iconify from 'src/components/iconify';
+
 import Scrollbar from 'src/components/scrollbar';
 import { useSnackbar } from 'src/components/snackbar';
 import { ConfirmDialog } from 'src/components/custom-dialog';
@@ -56,6 +50,7 @@ import InvoiceAnalytic from '../invoice-analytic';
 import InvoiceTableRow from '../invoice-table-row';
 import InvoiceTableToolbar from '../invoice-table-toolbar';
 import InvoiceTableFiltersResult from '../invoice-table-filters-result';
+import Footer from '../../footer/footer';
 import {
   _mock,
   _ecommerceNewProducts,
@@ -64,7 +59,6 @@ import {
   _ecommerceLatestProducts,
 } from 'src/_mock';
 import { S3userFichasLists, downloadFicha } from '../../../../../utils/axios.js';
-import Footer from '../../footer/footer';
 
 // ----------------------------------------------------------------------
 
@@ -188,7 +182,7 @@ export default function InvoiceListView() {
 
   const color = ['success', 'warning', 'error', 'default'];
 
-  let TABS = new_tags.map((tags) => {
+  const TABS = new_tags.map((tags) => {
     const container = {};
 
     container.value = tags;
