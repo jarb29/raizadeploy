@@ -30,7 +30,7 @@ export default function InvoiceTableToolbar({
 
   const handleFilterName = useCallback(
     (event) => {
-      onFilters('name', event.target.value);
+      onFilters('cliente', event.target.value);
     },
     [onFilters]
   );
@@ -73,7 +73,7 @@ export default function InvoiceTableToolbar({
           pr: { xs: 2.5, md: 1 },
         }}
       >
-        <FormControl
+        {/* <FormControl
           sx={{
             flexShrink: 0,
             width: { xs: 1, md: 180 },
@@ -96,9 +96,9 @@ export default function InvoiceTableToolbar({
               </MenuItem>
             ))}
           </Select>
-        </FormControl>
+        </FormControl> */}
 
-        <DatePicker
+        {/* <DatePicker
           label="Start date"
           value={filters.startDate}
           onChange={handleFilterStartDate}
@@ -106,8 +106,8 @@ export default function InvoiceTableToolbar({
           sx={{
             maxWidth: { md: 180 },
           }}
-        />
-
+        /> */}
+        {/* 
         <DatePicker
           label="End date"
           value={filters.endDate}
@@ -126,12 +126,12 @@ export default function InvoiceTableToolbar({
               bottom: { md: -40 },
             },
           }}
-        />
+        /> */}
 
         <Stack direction="row" alignItems="center" spacing={2} flexGrow={1} sx={{ width: 1 }}>
           <TextField
             fullWidth
-            value={filters.name}
+            value={filters.cliente}
             onChange={handleFilterName}
             placeholder="Search customer or invoice number..."
             InputProps={{
@@ -143,13 +143,13 @@ export default function InvoiceTableToolbar({
             }}
           />
 
-          <IconButton onClick={popover.onOpen}>
+          {/* <IconButton onClick={popover.onOpen}>
             <Iconify icon="eva:more-vertical-fill" />
-          </IconButton>
+          </IconButton> */}
         </Stack>
       </Stack>
 
-      <CustomPopover
+      {/* <CustomPopover
         open={popover.open}
         onClose={popover.onClose}
         arrow="right-top"
@@ -181,7 +181,7 @@ export default function InvoiceTableToolbar({
           <Iconify icon="solar:export-bold" />
           Export
         </MenuItem>
-      </CustomPopover>
+      </CustomPopover> */}
     </>
   );
 }

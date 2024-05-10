@@ -63,8 +63,8 @@ import { S3userFichasLists } from '../../../../../utils/axios';
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'cliente', label: 'Ficha/Producto' },
-  { id: 'modifiedAt', label: 'Creado' },
+  { id: 'cliente', label: 'Ficha/Producto', align: 'center' },
+  { id: 'modifiedAt', label: 'Creado', align: 'center' },
   // { id: 'dueDate', label: 'Due' },
   // { id: 'price', label: 'Amount' },
   { id: 'version', label: 'Version', align: 'center' },
@@ -73,6 +73,7 @@ const TABLE_HEAD = [
 ];
 
 const defaultFilters = {
+  cliente: '',
   name: '',
   service: [],
   status: 'all',
@@ -144,7 +145,7 @@ export default function InvoiceListView() {
     }
 
     fetchData();
-  }, [user.accessToken, user.email]);
+  }, []);
 
   const dataFiltered = applyFilter({
     inputData: tableData,
@@ -392,7 +393,7 @@ export default function InvoiceListView() {
       // },
       {
         target: '#demo__4',
-        title: 'Step 5',
+        title: 'Step 4',
         placement: 'left',
         showProgress: false,
         styles: {
@@ -725,7 +726,7 @@ export default function InvoiceListView() {
 // ----------------------------------------------------------------------
 
 function applyFilter({ inputData, comparator, filters, dateError }) {
-  const { name, status, service, startDate, endDate } = filters;
+  const { name, status, service, startDate, endDate, cliente } = filters;
 
   const stabilizedThis = inputData.map((el, index) => [el, index]);
 
@@ -744,6 +745,24 @@ function applyFilter({ inputData, comparator, filters, dateError }) {
         invoice.invoiceTo.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
     );
   }
+
+  if (cliente) {
+    inputData = inputData.filter((invoice) =>
+      [invoice.id].some((filterItem) => filterItem.includes(cliente))
+    );
+  }
+
+  // if (cliente) {
+  //   inputData = inputData.filter((invoice) =>
+  //     cliente.find((filterItem) => invoice.id.includes(filterItem.id))
+  //   );
+  // }
+
+  // if (cliente) {
+  //   inputData = inputData.filter((invoice) =>
+  //     cliente.some((filterItem) => invoice.id.includes(filterItem.id))
+  //   );
+  // }
 
   if (status !== 'all') {
     inputData = inputData.filter((invoice) => invoice.status === status);

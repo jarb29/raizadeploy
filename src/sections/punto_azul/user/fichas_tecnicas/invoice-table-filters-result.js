@@ -24,7 +24,7 @@ export default function InvoiceTableFiltersResult({
   const shortLabel = shortDateLabel(filters.startDate, filters.endDate);
 
   const handleRemoveKeyword = useCallback(() => {
-    onFilters('name', '');
+    onFilters('cliente', '');
   }, [onFilters]);
 
   const handleRemoveService = useCallback(
@@ -55,7 +55,7 @@ export default function InvoiceTableFiltersResult({
       </Box>
 
       <Stack flexGrow={1} spacing={1} direction="row" flexWrap="wrap" alignItems="center">
-        {!!filters.service.length && (
+        {/* {!!filters.service.length && (
           <Block label="Service:">
             {filters.service.map((item) => (
               <Chip
@@ -66,13 +66,13 @@ export default function InvoiceTableFiltersResult({
               />
             ))}
           </Block>
-        )}
+        )} */}
 
-        {filters.status !== 'all' && (
+        {/* {filters.status !== 'all' && (
           <Block label="Status:">
             <Chip size="small" label={filters.status} onDelete={handleRemoveStatus} />
           </Block>
-        )}
+        )} */}
 
         {filters.startDate && filters.endDate && (
           <Block label="Date:">
@@ -80,9 +80,9 @@ export default function InvoiceTableFiltersResult({
           </Block>
         )}
 
-        {!!filters.name && (
+        {!!filters.cliente && (
           <Block label="Keyword:">
-            <Chip label={filters.name} size="small" onDelete={handleRemoveKeyword} />
+            <Chip label={filters.cliente} size="small" onDelete={handleRemoveKeyword} />
           </Block>
         )}
 
