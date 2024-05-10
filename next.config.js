@@ -1,8 +1,8 @@
 module.exports = {
   trailingSlash: true,
-  // eslint: {
-  //   ignoreDuringBuilds: true,
-  // },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 
   modularizeImports: {
     '@mui/icons-material': {
