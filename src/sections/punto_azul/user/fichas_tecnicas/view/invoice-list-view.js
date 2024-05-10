@@ -58,7 +58,7 @@ import {
   _ecommerceSalesOverview,
   _ecommerceLatestProducts,
 } from 'src/_mock';
-import { S3userFichasLists, downloadFicha } from '../../../../../utils/axios.js';
+import { S3userFichasLists } from '../../../../../utils/axios';
 
 // ----------------------------------------------------------------------
 
@@ -144,7 +144,7 @@ export default function InvoiceListView() {
     }
 
     fetchData();
-  }, []);
+  }, [user.accessToken, user.email]);
 
   const dataFiltered = applyFilter({
     inputData: tableData,

@@ -30,7 +30,7 @@ import CustomPopover, { usePopover } from 'src/components/custom-popover';
 
 import FileManagerShareDialog from './file-manager-share-dialog';
 import FileManagerFileDetails from './file-manager-file-details';
-import { downloadFicha } from '../../../../utils/axios.js';
+import { downloadFicha } from '../../../../utils/axios';
 // ----------------------------------------------------------------------
 
 export default function FileManagerTableRow({ row, selected, onSelectRow, onDeleteRow }) {
@@ -59,7 +59,7 @@ export default function FileManagerTableRow({ row, selected, onSelectRow, onDele
   }, []);
 
   async function fetchData(varia, idToken) {
-    const new_tableData = await downloadFicha(varia, idToken);
+    const new_tableData = downloadFicha(varia, idToken);
   }
 
   const dowloadFicha = useCallback((varia) => {

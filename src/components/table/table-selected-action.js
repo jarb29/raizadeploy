@@ -7,7 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Iconify from 'src/components/iconify';
 import { useAuthContext } from 'src/auth/hooks';
-import { downloadFicha } from 'src/utils/axios.js';
+import { downloadFicha } from 'src/utils/axios';
 // ----------------------------------------------------------------------
 
 export default function TableSelectedAction({
@@ -24,13 +24,13 @@ export default function TableSelectedAction({
     return null;
   }
   const { user } = useAuthContext();
-  console.log(selected);
+
   async function fetchData(varia, idToken) {
-    const new_tableData = await downloadFicha(varia, idToken);
+    await downloadFicha(varia, idToken);
   }
 
   const handleDownloadFicha = () => {
-    const dowloadFicha = selected.map((varia) => {
+    selected.map((varia) => {
       return fetchData(varia, user.accessToken);
     });
     // Do something with the dowloadFicha array, e.g., dispatch an action

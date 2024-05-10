@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import { useCallback } from 'react';
-import Avatar from '@mui/material/Avatar';
 
-import Divider from '@mui/material/Divider';
 import MenuItem from '@mui/material/MenuItem';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
@@ -19,7 +17,7 @@ import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
 import CustomPopover, { usePopover } from 'src/components/custom-popover';
-import { downloadFicha } from '../../../../utils/axios.js';
+import { downloadFicha } from '../../../../utils/axios';
 // ----------------------------------------------------------------------
 
 export default function InvoiceTableRow({

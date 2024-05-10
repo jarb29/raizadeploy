@@ -10,8 +10,6 @@ import { useBoolean } from 'src/hooks/use-boolean';
 
 import { isAfter, isBetween } from 'src/utils/format-time';
 
-import { _allFiles, FILE_TYPE_OPTIONS } from 'src/_mock';
-
 import { useSnackbar } from 'src/components/snackbar';
 import EmptyContent from 'src/components/empty-content';
 import { fileFormat } from 'src/components/file-thumbnail';
@@ -26,7 +24,7 @@ import FileManagerPanel from '../file-manager-panel';
 
 import FileManagerFiltersResult from '../file-manager-filters-result';
 import FileManagerNewFolderDialog from '../file-manager-new-folder-dialog';
-import { fetchFiles, deleteFicha } from '../../../../../utils/axios.js';
+import { fetchFiles, deleteFicha } from '../../../../../utils/axios';
 
 // import FileManagerUpload from '../file-manager-upload';
 

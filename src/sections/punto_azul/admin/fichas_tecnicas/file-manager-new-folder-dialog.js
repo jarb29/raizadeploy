@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect, useCallback } from 'react';
 
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import TextField from '@mui/material/TextField';
@@ -11,15 +10,13 @@ import DialogContent from '@mui/material/DialogContent';
 import Container from '@mui/material/Container';
 import Iconify from 'src/components/iconify';
 // import { Upload } from 'src/components/upload';
-import CountrySelect from 'src/components/country-select';
+
 import { Upload } from 'src/sections/punto_azul/admin/upload';
 import { Autocomplete } from '@mui/material';
-import AutocompleteView from 'src/sections/punto_azul/admin/autocomplete/auto_complete_view';
-import { useAuthContext } from 'src/auth/hooks';
-import { getUploadUrl, uploadFile, fetchFiles, getCognitoUsers } from '../../../../utils/axios.js';
-import { countries } from 'src/assets/data';
 
-import { append } from 'stylis';
+import { useAuthContext } from 'src/auth/hooks';
+import { getUploadUrl, uploadFile, getCognitoUsers } from '../../../../utils/axios.js';
+
 // ----------------------------------------------------------------------
 const options = ['Option 1', 'Option 2'];
 export default function FileManagerNewFolderDialog({

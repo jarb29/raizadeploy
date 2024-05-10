@@ -104,6 +104,7 @@ export function fileThumb(fileUrl) {
       break;
     case 'image':
       thumb = iconUrl('ic_img');
+      break;
     case 'CEBOLLA':
       thumb = PersonaliconUrl('CEBOLLA');
       break;

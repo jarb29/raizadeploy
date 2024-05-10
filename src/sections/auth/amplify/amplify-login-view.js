@@ -60,7 +60,7 @@ export default function AmplifyLoginView() {
   const onSubmit = handleSubmit(async (data) => {
     try {
       await login?.(data.email, data.password);
-      router.push(returnTo || PATH_AFTER_LOGIN);
+      router.push(returnTo);
     } catch (error) {
       console.error(error);
       reset();
