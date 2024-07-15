@@ -22,7 +22,7 @@ import { useBoolean } from 'src/hooks/use-boolean';
 
 import { useAuthContext } from 'src/auth/hooks';
 import { PATH_AFTER_LOGIN } from 'src/config-global';
-
+import { UserCreateView } from 'src/sections/punto_azul/create_laser_cnc/view';
 // ----------------------------------------------------------------------
 
 export default function CreateUser() {
@@ -85,6 +85,12 @@ export default function CreateUser() {
       </Stack>
     </Stack>
   );
+  
+  const renderNewlaserCnc = (
+    <Stack spacing={2} sx={{ mb: 1 }}>
+        < UserCreateView  />
+    </Stack>
+  );
 
   const renderForm = (
     <Stack spacing={2} sx={{ mb: 3 }}>
@@ -114,12 +120,13 @@ export default function CreateUser() {
           flexDirection: 'column',
         }}
       >
+        
         <CustomBreadcrumbs
-          heading="Crear Usuario"
+          heading="Crear CNC"
           links={[
             { name: 'Dashboard', href: paths.dashboard.puntoazul.root },
             {
-              name: 'Crear Usuario',
+              name: 'Crear CNC',
               href: paths.dashboard.puntoazul.createuser,
             },
             { name: 'Crear' },
@@ -132,11 +139,22 @@ export default function CreateUser() {
           }}
         />
 
-        <Grid container spacing={3}>
+        <Grid xs={12} md={12}>
+              {renderNewlaserCnc}
+
+              {!!errorMsg && (
+                <Alert severity="error" sx={{ mb: 3 }}>
+                  {errorMsg}
+                </Alert>
+              )}
+
+        </Grid>
+
+        <Grid container spacing = {5} sx={{ display: 'flex', alignItems: 'center', p: 7 }} >
           <Grid xs={12} md={4}>
             <Card sx={{ display: 'flex', alignItems: 'center', p: 3 }}>
               {renderHead}
-
+ 
               {!!errorMsg && (
                 <Alert severity="error" sx={{ mb: 3 }}>
                   {errorMsg}
@@ -144,10 +162,12 @@ export default function CreateUser() {
               )}
             </Card>
           </Grid>
+
           <Grid xs={12} md={4}>
             <Card sx={{ display: 'flex', alignItems: 'center', p: 3 }}>{renderForm}</Card>
           </Grid>
         </Grid>
+  
       </Container>
     </>
   );

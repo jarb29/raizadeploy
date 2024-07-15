@@ -23,8 +23,8 @@ export default function OverviewAppView() {
 
   const admin = ADMINISTRATOR.email.includes(email);
   const navData = admin
-    ? `Espero te rinda tu dia amor \n ${name}`
-    : 'Espero que todas sus fichas tecnicas esten acorde a sus requerimientos.';
+    ? `Les deseo un productivo dia \n ${name}`
+    : 'Espero que los numeros le cuadren.';
 
   const theme = useTheme();
 

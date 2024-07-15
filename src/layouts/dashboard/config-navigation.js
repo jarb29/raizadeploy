@@ -52,44 +52,78 @@ export function useNavData() {
 
   const data = useMemo(
     () => [
-      // ----------------------------------------------------------------------
-      // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      {
-        subheader: t('punto azul'),
+            {
+        subheader: t('overview'),
         items: [
-          // USER
+          // {
+          //   title: t('app'),
+          //   path: paths.dashboard.root,
+          //   icon: ICONS.dashboard,
+          // },
+          // {
+          //   title: t('ecommerce'),
+          //   path: paths.dashboard.general.ecommerce,
+          //   icon: ICONS.ecommerce,
+          // },
           {
-            title: t('fichas tecnicas'),
-            path: paths.dashboard.puntoazul.fichastecnicasuser,
-            icon: ICONS.blog,
-            children: [
-              {
-                title: t('disponibles'),
-                path: paths.dashboard.puntoazul.fichastecnicasuser,
-              },
-            ],
+            title: t('Dashboard Laser'),
+            path: paths.dashboard.puntoazul.laserdasboard,
+            icon: ICONS.analytics,
           },
-
+          // {
+          //   title: t('Dashboard CNC'),
+          //   path: paths.dashboard.puntoazul.laserdasboard,
+          //   icon: ICONS.analytics,
+          // },
+          // {
+          //   title: t('analytics'),
+          //   path: paths.dashboard.general.analytics,
+          //   icon: ICONS.analytics,
+          // },
+          // {
+          //   title: t('banking'),
+          //   path: paths.dashboard.general.banking,
+          //   icon: ICONS.banking,
+          // },
+          // {
+          //   title: t('booking'),
+          //   path: paths.dashboard.general.booking,
+          //   icon: ICONS.booking,
+          // },
+          // {
+          //   title: t('file'),
+          //   path: paths.dashboard.general.file,
+          //   icon: ICONS.file,
+          // },
+        ],
+      },
+      {
+        subheader: t('Kupfer N1'),
+        items: [
           // PRODUCT
           {
-            title: t('crear usuario'),
-            path: paths.dashboard.puntoazul.createuser,
-            icon: ICONS.user,
-            children: [{ title: t('crear usuario'), path: paths.dashboard.puntoazul.createuser }],
+            title: t('Laser'),
+            path: paths.dashboard.puntoazul.root,
+            icon: ICONS.external,
+            children: [
+              { title: t('Cargar'), path: paths.dashboard.puntoazul.createuser },
+              { title: t('Descargar'), path: paths.dashboard.puntoazul.fichastecnicasadmin },
+              
+            ],
           },
 
           // ORDER
-          {
-            title: t('agregar fichas tecnicas'),
-            path: paths.dashboard.puntoazul.fichastecnicasadmin,
-            icon: ICONS.file,
-            children: [
-              { title: t('agregar'), path: paths.dashboard.puntoazul.fichastecnicasadmin },
-            ],
-          },
+          // {
+          //   title: t('Centros de Mecanizado'),
+          //   path: paths.dashboard.puntoazul.fichastecnicasadmin,
+          //   icon: ICONS.file,
+          //   children: [
+          //     { title: t('C1'), path: paths.dashboard.puntoazul.fichastecnicasadmin },
+          //     { title: t('C2'), path: paths.dashboard.puntoazul.fichastecnicasadmin }
+          //   ],
+          // },
         ],
       },
-      //###############################################################
     ],
     [t]
   );

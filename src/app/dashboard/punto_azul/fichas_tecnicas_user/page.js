@@ -3,7 +3,7 @@ import { InvoiceListView } from 'src/sections/punto_azul/user/fichas_tecnicas/vi
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Punto Azul: Fichas Tecnicas User',
+  title: 'KupferN1: Fichas Tecnicas User',
 };
 
 export default function InvoiceListPage() {

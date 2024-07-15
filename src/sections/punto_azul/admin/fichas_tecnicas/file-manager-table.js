@@ -22,11 +22,12 @@ import FileManagerTableRow from './file-manager-table-row';
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Email/Cliente' },
-  { id: 'cliente', label: 'Nombre del Producto', width: 120 },
-  { id: 'type', label: 'Producto', width: 120 },
-  { id: 'modifiedAt', label: 'Fecha Agregado', width: 140 },
-  { id: 'version', label: 'Version', align: 'right', width: 140 },
+  { id: 'pv', label: 'Pv' },
+  { id: 'cnc', label: 'CNC', width: 120 },
+  { id: 'kg', label: 'Kg', width: 120 },
+  { id: 'metros', label: 'metros', width: 120 },
+  { id: 'createddAt', label: 'Fecha Agregado', width: 140 },
+  { id: 'espesor', label: 'Espesor', align: 'right', width: 140 },
   { id: '', width: 88 },
 ];
 

@@ -51,12 +51,12 @@ export default function NavUpgrade() {
           </Typography>
 
           <Typography variant="body2" noWrap sx={{ color: 'text.disabled' }}>
-            contacto@ptoazul.cl
+            jarb29@gmail.com
           </Typography>
         </Stack>
 
         <Button variant="contained" href={paths.puntoAzul} target="_blank" rel="noopener">
-          Punto Azul
+          KupferN1
         </Button>
       </Stack>
     </Stack>

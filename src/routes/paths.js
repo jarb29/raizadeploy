@@ -127,6 +127,7 @@ export const paths = {
       createuser: `${ROOTS.DASHBOARD}/punto_azul/create_user`,
       fichastecnicasuser: `${ROOTS.DASHBOARD}/punto_azul/fichas_tecnicas_user`,
       fichastecnicasadmin: `${ROOTS.DASHBOARD}/punto_azul/fichas_tecnicas_admin`,
+      laserdasboard: `${ROOTS.DASHBOARD}/punto_azul/laser_dashboard`,
     },
 
     user: {

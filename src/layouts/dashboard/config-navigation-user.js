@@ -52,7 +52,7 @@ export function useNavDataUser() {
       // ----------------------------------------------------------------------
       // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       {
-        subheader: t('punto azul'),
+        subheader: t('KupferN1'),
         items: [
           // USER
           {

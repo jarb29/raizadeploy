@@ -12,7 +12,11 @@ import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
 import InputAdornment from '@mui/material/InputAdornment';
 
+
 import { useRouter, useSearchParams } from 'src/routes/hooks';
+import Link from '@mui/material/Link';
+import { paths } from 'src/routes/paths';
+import { RouterLink } from 'src/routes/components';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
@@ -72,13 +76,13 @@ export default function AmplifyLoginView() {
     <Stack spacing={2} sx={{ mb: 5 }}>
       <Typography variant="h4">Ingresar</Typography>
 
-      {/* <Stack direction="row" spacing={0.5}>
+      <Stack direction="row" spacing={0.5}>
         <Typography variant="body2">New user?</Typography>
 
         <Link component={RouterLink} href={paths.auth.amplify.register} variant="subtitle2">
           Create an account
         </Link>
-      </Stack> */}
+      </Stack>
     </Stack>
   );
 
@@ -101,7 +105,7 @@ export default function AmplifyLoginView() {
         }}
       />
 
-      {/* <Link
+      <Link
         component={RouterLink}
         href={paths.auth.amplify.forgotPassword}
         variant="body2"
@@ -110,7 +114,7 @@ export default function AmplifyLoginView() {
         sx={{ alignSelf: 'flex-end' }}
       >
         Forgot password?
-      </Link> */}
+      </Link>
 
       <LoadingButton
         fullWidth

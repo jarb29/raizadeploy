@@ -36,8 +36,11 @@ import { downloadFicha } from '../../../../utils/axios';
 export default function FileManagerTableRow({ row, selected, onSelectRow, onDeleteRow }) {
   const theme = useTheme();
   const { user } = useAuthContext();
-  const { name, cliente, type, modifiedAt, shared, isFavorited, version, id } = row;
+  console.log(row, 'THE ROW')
+  const { cnc, createdAt, espesor, id, kg, metros, pv, status, isFavorited, type, shared, cliente} = row;
 
+
+  // name, cliente, type, modifiedAt, shared, isFavorited, version, id
   const { enqueueSnackbar } = useSnackbar();
 
   const { copy } = useCopyToClipboard();
@@ -141,23 +144,26 @@ export default function FileManagerTableRow({ row, selected, onSelectRow, onDele
                 ...(details.value && { fontWeight: 'fontWeightBold' }),
               }}
             >
-              {name}
+              {pv}
             </Typography>
           </Stack>
         </TableCell>
 
         <TableCell onClick={handleClick} sx={{ whiteSpace: 'nowrap' }}>
-          {cliente}
+          {cnc}
         </TableCell>
 
         <TableCell onClick={handleClick} sx={{ whiteSpace: 'nowrap' }}>
-          {type}
+          {kg}
+        </TableCell>
+        <TableCell onClick={handleClick} sx={{ whiteSpace: 'nowrap' }}>
+          {metros}
         </TableCell>
 
         <TableCell onClick={handleClick} sx={{ whiteSpace: 'nowrap' }}>
           <ListItemText
-            primary={fDate(modifiedAt)}
-            secondary={fTime(modifiedAt)}
+            primary={fDate(createdAt)}
+            secondary={fTime(createdAt)}
             primaryTypographyProps={{ typography: 'body2' }}
             secondaryTypographyProps={{
               mt: 0.5,
@@ -167,7 +173,7 @@ export default function FileManagerTableRow({ row, selected, onSelectRow, onDele
           />
         </TableCell>
         <TableCell align="right" onClick={handleClick}>
-          {version}
+          {espesor}
         </TableCell>
 
         {/* <TableCell align="right" onClick={handleClick}>
@@ -238,16 +244,16 @@ export default function FileManagerTableRow({ row, selected, onSelectRow, onDele
           <Iconify icon="solar:share-bold" />
           Share
         </MenuItem> */}
-        <MenuItem
+        {/* <MenuItem
           onClick={() => {
             // share.onTrue();
             dowloadFicha(id);
             popover.onClose();
           }}
-        >
-          <Iconify icon="eva:download-outline" />
+        > */}
+          {/* <Iconify icon="eva:download-outline" />
           Descargar
-        </MenuItem>
+        </MenuItem> */}
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
@@ -258,12 +264,12 @@ export default function FileManagerTableRow({ row, selected, onSelectRow, onDele
           }}
           sx={{ color: 'error.main' }}
         >
-          <Iconify icon="solar:trash-bin-trash-bold" />
-          Eliminar
+          <Iconify icon="material-symbols:check-circle-outline-rounded" />
+          Cerrar
         </MenuItem>
       </CustomPopover>
 
-      <FileManagerFileDetails
+      {/* <FileManagerFileDetails
         item={row}
         favorited={favorite.value}
         onFavorite={favorite.onToggle}
@@ -271,9 +277,9 @@ export default function FileManagerTableRow({ row, selected, onSelectRow, onDele
         open={details.value}
         onClose={details.onFalse}
         onDelete={onDeleteRow}
-      />
+      /> */}
 
-      <FileManagerShareDialog
+      {/* <FileManagerShareDialog
         open={share.value}
         shared={shared}
         inviteEmail={cliente}
@@ -283,16 +289,16 @@ export default function FileManagerTableRow({ row, selected, onSelectRow, onDele
           share.onFalse();
           setInviteEmail('');
         }}
-      />
+      /> */}
 
       <ConfirmDialog
         open={confirm.value}
         onClose={confirm.onFalse}
         title="Delete"
-        content="Realmente deseas eliminarla?"
+        content="Realmente deseas cerrarla?"
         action={
           <Button variant="contained" color="error" onClick={onDeleteRow}>
-            Eliminar
+            Cerrar
           </Button>
         }
       />

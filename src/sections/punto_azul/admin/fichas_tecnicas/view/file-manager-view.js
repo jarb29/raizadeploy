@@ -24,7 +24,7 @@ import FileManagerPanel from '../file-manager-panel';
 
 import FileManagerFiltersResult from '../file-manager-filters-result';
 import FileManagerNewFolderDialog from '../file-manager-new-folder-dialog';
-import { fetchFiles, deleteFicha } from '../../../../../utils/axios';
+import { getDataLaser, updateLaser } from '../../../../../utils/axios';
 
 // import FileManagerUpload from '../file-manager-upload';
 
@@ -68,26 +68,19 @@ export default function FileManagerView() {
   }
   useEffect(() => {
     async function fetchData() {
-      const new_tableData = await fetchFiles(user.accessToken);
+      const new_tableData = await getDataLaser(user.accessToken);
+     
 
-      const new_files = new_tableData.map((file) => {
-        const email = file.Key.split('/')[0].trim();
-        let tags = file.Key.split('/')[1].split(' ').slice(0, -1);
-        tags.push(email);
-        tags.push(getSubstring(file.Key, '(', ')'));
-        tags = tags.filter((word) => word.trim().length > 0);
-        file.name = email;
-        file.tags = tags;
-        file.id = file.Key;
-        file.cliente = file.Key.split('/')[1].split('.')[0];
-        file.type = tags[1];
-        file.modifiedAt = file.LastModified;
-        file.version = tags.at(-1);
-        // file.shared = file.Key;
+      const new_files = new_tableData
+                  .filter(file => file.status === 'active') // Filter the data based on the condition
+                  .map(file => {
+                    file.id = `${file.pv}/${file.cnc}`;
+                    file.cliente = file.pv;
+                    file.type = file.pv;
+                    file.shared = file.cnc;
 
-        return file;
-      });
-
+                    return file;
+                  });
       setTableData(...tableData, new_files);
     }
 
@@ -141,24 +134,27 @@ export default function FileManagerView() {
     setFilters(defaultFilters);
   }, []);
 
-  const handleDeleteFiles = async (files, token) => {
-    for (let element of files) {
-      try {
-        await deleteFicha(element, token);
-        // await uploadFile(uploadUrl, element);
-      } catch (error) {
-        alert(`Could not delete a file: ${error}`);
-      }
-    }
+  // const handleDeleteFiles = async (files, token) => {
+  //   for (let element of files) {
+  //     try {
+  //       await deleteFicha(element, token);
+  //       // await uploadFile(uploadUrl, element);
+  //     } catch (error) {
+  //       alert(`Could not delete a file: ${error}`);
+  //     }
+  //   }
 
-    console.info('All files delete!');
-  };
+  //   console.info('All files delete!');
+  // };
 
   const handleDeleteItem = useCallback(
     (id) => {
-      console.log(id, 'id');
+ 
+      const [pv, cnc] = id.split('/');
 
-      handleDeleteFiles([id], user.accessToken);
+      updateLaser(pv, cnc, 'closed', user.accessToken);
+
+      // handleDeleteFiles([id], user.accessToken);
       const deleteRow = tableData.filter((row) => row.id !== id);
 
       enqueueSnackbar('Delete success!');
@@ -174,7 +170,7 @@ export default function FileManagerView() {
     const deleteRows = tableData.filter((row) => !table.selected.includes(row.id));
     console.log(table.selected, 'deleteRows');
     // deleteFicha();
-    handleDeleteFiles(table.selected, user.accessToken);
+    // handleDeleteFiles(table.selected, user.accessToken);
 
     enqueueSnackbar('Delete success!');
 
@@ -241,21 +237,21 @@ export default function FileManagerView() {
   return (
     <>
       <Container maxWidth={settings.themeStretch ? false : 'lg'}>
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
+        {/* <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="h4">Fichas Tecnicas/Clientes </Typography>
-          {/* <Button
+          <Button
             variant="contained"
             startIcon={<Iconify icon="eva:cloud-upload-fill" />}
             onClick={upload.onTrue}
           >
             Upload
-          </Button> */}
+          </Button>
           <FileManagerPanel
             title="Upload"
-            // subTitle={`${dataFiltered.filter((item) => item.type === 'folder').length} folders`}
+            subTitle={`${dataFiltered.filter((item) => item.type === 'folder').length} folders`}
             onOpen={newFolder.onTrue}
             collapse={folders.value}
-            // onCollapse={folders.onToggle}
+            onCollapse={folders.onToggle}
           />
 
           <FileManagerNewFolderDialog open={upload.value} onClose={upload.onFalse} />
@@ -271,7 +267,7 @@ export default function FileManagerView() {
             folderName={folderName}
             onChangeFolderName={handleChangeFolderName}
           />
-        </Stack>
+        </Stack> */}
 
         <Stack
           spacing={2.5}

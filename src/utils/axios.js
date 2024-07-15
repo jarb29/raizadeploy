@@ -68,34 +68,125 @@ export const deleteFicha = async (data_key, idToken) => {
   }
 };
 
-// export const deleteFicha = async (key, idToken) => {
-//   // Validate key
-//   if (!key) throw new Error('Key is required');
-//   console.log('key', key);
+// Putting data to the Laser
 
-//   try {
-//     // Make request with axios
-//     const response = await axios({
-//       url: `${apiEndpoint}/todos/${key}/delete`,
-//       method: 'DELETE',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         // prettier-ignore
-//         'Authorization': `Bearer ${idToken}`,
-//       },
-//     });
+export const putDataLaser = async (idToken, data) => {
+  const response = await fetch(`${apiEndpoint}/laserUploadCarga`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      // prettier-ignore
+      'Authorization': `Bearer ${idToken}`,
+    },
+    body: JSON.stringify(data),
+  });
 
-//     return {
-//       success: true,
-//     };
-//   } catch (error) {
-//     console.error('Error deleting object:', error);
-//     throw error;
-//   }
-// };
+  // Handle the response as needed
+  if (response.ok) {
+    // Request was successful
+    const responseData = await response.json();
+    return responseData;
+  } else {
+    // Request failed
+    throw new Error(`HTTP error ${response.status}`);
+  }
+};
 
-// Dowload Fichas Tecnicas
-// downloadFicha.js
+// getting all data from laser
+
+export const getDataLaser = async (idToken) => {
+  try {
+    const response = await fetch(`${apiEndpoint}/laserGetCarga`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        // prettier-ignore
+        'Authorization': `Bearer ${idToken}`,
+      },
+    });
+
+    // Handle the response as needed
+    if (response.ok) {
+      // Request was successful
+      const responseData = await response.json();
+      return responseData;
+    } else {
+      // Request failed
+      const errorData = await response.json();
+      throw new Error(`HTTP error ${response.status}: ${errorData.error || 'Unknown error'}`);
+    }
+  } catch (error) {
+    console.error('Error fetching laser data:', error);
+    // Return a default value or handle the error in a different way
+    return [];
+  }
+};
+//getting average value data 
+export const getAverageLaserValue = async (idToken) => {
+  try {
+    const response = await fetch(`${apiEndpoint}/averageValue`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        // prettier-ignore
+        'Authorization': `Bearer ${idToken}`,
+      },
+    });
+
+    // Handle the response as needed
+    if (response.ok) {
+      // Request was successful
+      const responseData = await response.json();
+      return responseData;
+    } else {
+      // Request failed
+      const errorData = await response.json();
+      throw new Error(`HTTP error ${response.status}: ${errorData.error || 'Unknown error'}`);
+    }
+  } catch (error) {
+    console.error('Error fetching laser data:', error);
+    // Return a default value or handle the error in a different way
+    return [];
+  }
+};
+
+
+
+//updating a file from the laser 
+export const updateLaser = async (pv, cnc, status, idToken) => {
+  try {
+    const response = await fetch(`${apiEndpoint}/laserUpdateCarga`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${idToken}`,
+      },
+      body: JSON.stringify({ pv, cnc, status }),
+    });
+
+    if (response.ok) {
+      // Laser update successful
+      const responseData = await response.text(); // Change from response.json()
+      console.log('Laser update successful:', responseData);
+      return responseData;
+    } else {
+      // Handle error response
+      const errorData = await response.text(); // Change from response.json()
+      console.error('Error updating laser:', errorData);
+      throw new Error(errorData);
+    }
+  } catch (error) {
+    console.error('Error updating laser:', error);
+    throw error;
+  }
+};
+
+
+
+
+
+
+
 
 export async function downloadFicha(key, idToken) {
   // Validate key
@@ -247,3 +338,5 @@ export const endpoints = {
     search: '/api/product/search',
   },
 };
+
+

@@ -36,15 +36,15 @@ export default function FileManagerNewFolderDialog({
   const [data, setData] = useState([]);
 
   const { user } = useAuthContext();
-  useEffect(() => {
-    async function fetchData() {
-      const response = await getCognitoUsers(user.accessToken);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await getCognitoUsers(user.accessToken);
 
-      setData(...data, response.Users);
-    }
+  //     setData(...data, response.Users);
+  //   }
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     if (!open) {

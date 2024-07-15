@@ -7,9 +7,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
+import Iconify from 'src/components/iconify';
 
+import Link from '@mui/material/Link';
+import { RouterLink } from 'src/routes/components';
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
+
+
 
 import { useAuthContext } from 'src/auth/hooks';
 import { PasswordIcon } from 'src/assets/icons';
@@ -70,7 +75,7 @@ export default function AmplifyForgotPasswordView() {
         Send Request
       </LoadingButton>
 
-      {/* <Link
+      <Link
         component={RouterLink}
         href={paths.auth.amplify.login}
         color="inherit"
@@ -82,7 +87,7 @@ export default function AmplifyForgotPasswordView() {
       >
         <Iconify icon="eva:arrow-ios-back-fill" width={16} />
         Return to sign in
-      </Link> */}
+      </Link>
     </Stack>
   );
 

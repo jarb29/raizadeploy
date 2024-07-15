@@ -13,7 +13,8 @@ export default function Layout({ children }) {
       <AuthClassicLayout title="Manage the job more effectively with Minimal">
         {children}
       </AuthClassicLayout>
-    </AuthGuard>
+      </AuthGuard>
+
   );
 }
 

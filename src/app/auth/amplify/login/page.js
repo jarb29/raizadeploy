@@ -3,7 +3,7 @@ import { AmplifyLoginView } from 'src/sections/auth/amplify';
 // ----------------------------------------------------------------------
 
 export const metadata = {
-  title: 'Punto Azul: Login',
+  title: 'KupferN1: Login',
 };
 
 export default function LoginPage() {

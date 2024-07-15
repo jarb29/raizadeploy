@@ -37,7 +37,7 @@ const LINKS = [
   },
   {
     headline: 'Contact',
-    children: [{ name: 'support@minimals.cc', href: '#' }],
+    children: [{ name: 'jarb29@gmail.com', href: '#' }],
   },
 ];
 
@@ -104,7 +104,7 @@ export default function Footer() {
                 mx: { xs: 'auto', md: 'unset' },
               }}
             >
-              Bienvenido al lugar de encuentro de todas sus fichas tecnicas.
+              Bienvenido al centro de gestion Laser KupferN1.
             </Typography>
 
             <Stack
@@ -161,7 +161,7 @@ export default function Footer() {
         </Grid>
 
         <Typography variant="body2" sx={{ mt: 10 }}>
-          © Hecho con cariño por: jarb29@gmail.com
+          © Hecho con cariño por: jarb29
         </Typography>
       </Container>
     </Box>

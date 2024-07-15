@@ -100,7 +100,7 @@ export default function AuthClassicLayout({ children, image, title }) {
       }}
     >
       <Typography variant="h3" sx={{ maxWidth: 480, textAlign: 'center' }}>
-        {title || 'Punto Azul'}
+        {title || 'KupferN1'}
       </Typography>
 
       <Box
